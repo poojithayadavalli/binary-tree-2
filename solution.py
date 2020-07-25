@@ -4,7 +4,7 @@ class Node:
         self.left = left
         self.right = right
 
-def binaryTree(arr, root, i, n):
+def insertLevelOrder(arr, root, i, n):
     if i < n: 
         temp = Node(arr[i])  
         root = temp 
@@ -22,11 +22,15 @@ def largestValues(root):
             node_arr = []
             for node in levels:
                 if node.left:
-                    val_arr.append(node.left.val)
-                    node_arr.append(node.left)
+                    if node.left.val!="null":
+                        val_arr.append(node.left.val)
+                        node_arr.append(node.left)
+                        print(node.left.val)
                 if node.right:
-                    val_arr.append(node.right.val)
-                    node_arr.append(node.right)
+                    if node.right.val!="null":
+                        val_arr.append(node.right.val)
+                        node_arr.append(node.right)
+                        print(node.right.val)
             if not val_arr:
                 break
             res.append(max(val_arr))
@@ -35,5 +39,5 @@ def largestValues(root):
  
 tree = input().split()
 root1=None
-root=binaryTree(tree,root1,0,len(tree))
+root=insertLevelOrder(tree,root1,0,len(tree))
 print(largestValues(root))
